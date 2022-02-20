@@ -1,0 +1,91 @@
+{
+  "projectType": "application",
+  "root": "apps/front-ui",
+  "sourceRoot": "apps/front-ui/src",
+  "prefix": "simple-pos",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/front-ui",
+        "index": "apps/front-ui/src/index.html",
+        "main": "apps/front-ui/src/main.ts",
+        "polyfills": "apps/front-ui/src/polyfills.ts",
+        "tsConfig": "apps/front-ui/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/front-ui/src/favicon.ico", "apps/front-ui/src/assets"],
+        "styles": ["apps/front-ui/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/front-ui/src/environments/environment.ts",
+              "with": "apps/front-ui/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "front-ui:build:production"
+        },
+        "development": {
+          "browserTarget": "front-ui:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "front-ui:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/front-ui/src/**/*.ts",
+          "apps/front-ui/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/front-ui"],
+      "options": {
+        "jestConfig": "apps/front-ui/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
