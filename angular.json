@@ -1,7 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "admin": "apps/admin",
+    "admin-e2e": "apps/admin-e2e",
     "front-ui": "apps/front-ui",
-    "front-ui-e2e": "apps/front-ui-e2e"
+    "front-ui-e2e": "apps/front-ui-e2e",
+    "ui-dashboard": "libs/ui/dashboard",
+    "ui-layout": "libs/ui/layout"
   }
 }
